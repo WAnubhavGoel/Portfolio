@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anubhav Goel — Full Stack Developer</title>
+  <meta name="description" content="Anubhav Goel — Full Stack Developer from Delhi. Building scalable web applications with React, Node.js, PostgreSQL & AI-powered systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">AG<span class="logo-dot">.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#techstack" class="nav-link">Stack</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <a href="https://github.com/WAnubhavGoel" target="_blank" rel="noopener" class="nav-github">
+        GitHub <span class="arrow">↗</span>
+      </a>
+      <a href="Anubhav_Goel_Resume.pdf" target="_blank" rel="noopener" class="nav-resume-btn" id="navResumeBtn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Resume
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
+  <section class="hero" id="home">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Full Stack Developer · Delhi, India
+      </div>
+      <h1 class="hero-name">
+        <span class="name-word">ANUBHAV</span>
+        <span class="name-word">GOEL</span>
+      </h1>
+      <p class="hero-desc">
+        Building scalable web applications with modern technologies.
+        Passionate about clean code, intuitive UX, and AI-powered systems.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary" id="heroProjectsBtn">View Projects</a>
+        <a href="Anubhav_Goel_Resume.pdf" target="_blank" rel="noopener" class="btn btn-resume" id="heroResumeBtn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          View Resume
+        </a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+        <a href="https://github.com/WAnubhavGoel" target="_blank" rel="noopener" class="btn btn-ghost">GitHub ↗</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-value">14<span class="stat-plus">+</span></span>
+          <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-value">400<span class="stat-plus">+</span></span>
+          <span class="stat-label">LeetCode</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-value">1700<span class="stat-plus">+</span></span>
+          <span class="stat-label">Contest Rating</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-value">8.59</span>
+          <span class="stat-label">CGPA</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3D Avatar with Eye Tracking -->
+    <div class="hero-avatar-wrap" id="avatarWrap">
+      <div class="avatar-orbit orbit-1"></div>
+      <div class="avatar-orbit orbit-2"></div>
+      <div class="avatar-face" id="avatarFace">
+        <div class="face-glow"></div>
+        <div class="face-inner">
+          <div class="eyes-row">
+            <div class="eye" id="eyeLeft">
+              <div class="eye-inner">
+                <div class="pupil" id="pupilLeft"><div class="pupil-shine"></div></div>
+              </div>
+            </div>
+            <div class="eye" id="eyeRight">
+              <div class="eye-inner">
+                <div class="pupil" id="pupilRight"><div class="pupil-shine"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="face-nose"></div>
+          <div class="face-mouth"><div class="mouth-arc"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ ABOUT ═══════════════════════════════════ -->
+  <section class="section about-section" id="about">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-num">01</span>
+        <h2 class="section-title">WHO AM I</h2>
+        <div class="section-underline"></div>
+      </div>
+
+      <div class="about-content reveal">
+        <p class="about-label">( ABOUT ME )</p>
+        <div class="about-text">
+          <p>
+            I am a <span class="highlight">passionate Full Stack Developer</span> with a knack for building scalable web applications using modern technologies like React, Node.js, PostgreSQL, and AI integration.
+          </p>
+          <p>
+            My journey in tech began with curiosity for solving real-world problems — from crafting secure authentication systems to building AI-powered compliance platforms with hybrid RAG engines and sub-10ms Redis caching.
+          </p>
+          <p>
+            I focus on writing clean, maintainable code and creating seamless user experiences. Currently pursuing my B.Tech at GGSIPU while actively working on real-world full-stack projects.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ MY TECH STACK ══════════════════════════════ -->
+  <section class="section techstack-section" id="techstack">
+    <div class="container">
+      <div class="ts-head reveal">
+        <h2 class="ts-main-title">MY TECH STACK</h2>
+        <div class="section-underline"></div>
+        <p class="ts-subtitle">A selection of technologies I use to design, build, and deploy full-stack web applications.</p>
+      </div>
+
+      <div class="ts-rows">
+
+        <div class="ts-row reveal">
+          <div class="ts-category-name">FRONTEND</div>
+          <div class="ts-icons">
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#F7DF1E">
+                <i class="devicon-javascript-plain" style="color:#000"></i>
+              </div>
+              <span>JavaScript</span>
+            </div>
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#20232A">
+                <i class="devicon-react-original colored"></i>
+              </div>
+              <span>React</span>
+            </div>
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#E34F26">
+                <i class="devicon-html5-plain" style="color:#fff"></i>
+              </div>
+              <span>HTML5</span>
+            </div>
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#1572B6">
+                <i class="devicon-css3-plain" style="color:#fff"></i>
+              </div>
+              <span>CSS3</span>
+            </div>
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#646CFF">
+                <i class="devicon-vitejs-plain" style="color:#FFD62E"></i>
+              </div>
+              <span>Vite</span>
+            </div>
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#61DAFB">
+                <span style="font-size:16px;font-weight:900;color:#000;font-family:monospace">v7</span>
+              </div>
+              <span>React Router</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ts-row reveal">
+          <div class="ts-category-name">BACKEND</div>
+          <div class="ts-icons">
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#339933">
+                <i class="devicon-nodejs-plain" style="color:#fff"></i>
+              </div>
+              <span>Node.js</span>
+            </div>
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#1a1a1a;border:1px solid #333">
+                <i class="devicon-express-original" style="color:#fff"></i>
+              </div>
+              <span>Express.js</span>
+            </div>
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#34495E">
+                <span class="ts-custom-text">🔑</span>
+              </div>
+              <span>Passport.js</span>
+            </div>
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#DC382D">
+                <i class="devicon-redis-plain" style="color:#fff"></i>
+              </div>
+              <span>BullMQ / Redis</span>
+            </div>
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#4285F4">
+                <span class="ts-custom-text" style="font-size:18px;color:#fff">✦</span>
+              </div>
+              <span>Gemini API</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ts-row reveal">
+          <div class="ts-category-name">DATABASE</div>
+          <div class="ts-icons">
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#336791">
+                <i class="devicon-postgresql-plain" style="color:#fff"></i>
+              </div>
+              <span>PostgreSQL</span>
+            </div>
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#1a1a1a;border:1px solid #444">
+                <span class="ts-custom-text" style="font-size:12px;font-weight:700;color:#fff;letter-spacing:-1px">pgv</span>
+              </div>
+              <span>pgvector</span>
+            </div>
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#2D3748">
+                <span class="ts-custom-text" style="font-size:14px;font-weight:800;color:#fff">▲</span>
+              </div>
+              <span>Prisma ORM</span>
+            </div>
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#3448C5">
+                <span class="ts-custom-text" style="font-size:18px">☁</span>
+              </div>
+              <span>Cloudinary</span>
+            </div>
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#00A36C">
+                <span class="ts-custom-text" style="font-size:12px;font-weight:700;color:#fff">NDB</span>
+              </div>
+              <span>Neon DB</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ts-row reveal">
+          <div class="ts-category-name">LANGUAGES<br />&amp; TOOLS</div>
+          <div class="ts-icons">
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#3776AB">
+                <i class="devicon-python-plain" style="color:#FFD43B"></i>
+              </div>
+              <span>Python</span>
+            </div>
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#007396">
+                <i class="devicon-java-plain" style="color:#fff"></i>
+              </div>
+              <span>Java</span>
+            </div>
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#00599C">
+                <i class="devicon-cplusplus-plain" style="color:#fff"></i>
+              </div>
+              <span>C++</span>
+            </div>
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#F05032">
+                <i class="devicon-git-plain" style="color:#fff"></i>
+              </div>
+              <span>Git</span>
+            </div>
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#1a1a1a;border:1px solid #444">
+                <i class="devicon-github-original" style="color:#fff"></i>
+              </div>
+              <span>GitHub</span>
+            </div>
+            <div class="ts-item">
+              <div class="ts-icon-box" style="background:#000;border:1px solid #333">
+                <span class="ts-custom-text" style="font-size:18px;font-weight:900;color:#fff">▲</span>
+              </div>
+              <span>Vercel</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ EDUCATION ═══════════════════════════════════ -->
+  <section class="section education-section" id="education">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-num">03</span>
+        <h2 class="section-title">EDUCATION</h2>
+        <div class="section-underline"></div>
+      </div>
+
+      <div class="edu-timeline">
+        <!-- Vertical animated line — absolutely positioned through the center column -->
+        <div class="edu-vline-wrap">
+          <div class="edu-vline-track">
+            <div class="edu-vline-fill" id="eduVlineFill"></div>
+          </div>
+        </div>
+
+        <!-- Entry 1 -->
+        <div class="edu-entry" data-index="0">
+          <div class="edu-left">
+            <h4 class="edu-inst">DL DAV Model School</h4>
+            <span class="edu-sub">Secondary · CBSE</span>
+          </div>
+          <div class="edu-center-col">
+            <div class="edu-dot" id="eduDot0"></div>
+            <div class="edu-year">2022</div>
+          </div>
+          <div class="edu-right">
+            <h3 class="edu-degree">Class X — High School</h3>
+            <p class="edu-grade">Percentage: <strong>95.60%</strong></p>
+            <div class="edu-pills">
+              <span>All Subjects</span>
+              <span>CBSE Board</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Entry 2 -->
+        <div class="edu-entry" data-index="1">
+          <div class="edu-left">
+            <h4 class="edu-inst">DL DAV Model School</h4>
+            <span class="edu-sub">Senior Secondary · CBSE</span>
+          </div>
+          <div class="edu-center-col">
+            <div class="edu-dot" id="eduDot1"></div>
+            <div class="edu-year">2024</div>
+          </div>
+          <div class="edu-right">
+            <h3 class="edu-degree">Class XII — PCM + CS</h3>
+            <p class="edu-grade">Percentage: <strong>92.20%</strong></p>
+            <div class="edu-pills">
+              <span>Physics</span>
+              <span>Chemistry</span>
+              <span>Mathematics</span>
+              <span>Computer Science</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Entry 3 -->
+        <div class="edu-entry" data-index="2">
+          <div class="edu-left">
+            <h4 class="edu-inst">GGSIPU, Delhi</h4>
+            <span class="edu-sub">University · B.Tech</span>
+          </div>
+          <div class="edu-center-col">
+            <div class="edu-dot" id="eduDot2"></div>
+            <div class="edu-year edu-year-range">2024<span>–</span>2028</div>
+          </div>
+          <div class="edu-right">
+            <h3 class="edu-degree">B.Tech in Information Technology</h3>
+            <p class="edu-grade">CGPA: <strong>8.59 / 10</strong></p>
+            <div class="edu-pills">
+              <span>DSA</span>
+              <span>DBMS</span>
+              <span>OS</span>
+              <span>OOP</span>
+              <span>Networking</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ PROJECTS ═══════════════════════════════════ -->
+  <section class="section projects-section" id="projects">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-num">04</span>
+        <h2 class="section-title">PROJECTS</h2>
+        <div class="section-underline"></div>
+      </div>
+
+      <div class="projects-list" id="projectsList">
+
+        <div class="project-row reveal" data-num="01">
+          <div class="pr-num">01</div>
+          <div class="pr-body">
+            <div class="pr-top">
+              <a href="https://coshield-ai.vercel.app/" target="_blank" rel="noopener" class="pr-name-link">
+                <h3 class="pr-name">COSHIELD AI <span class="pr-live-arrow">↗</span></h3>
+              </a>
+              <div class="pr-actions">
+                <a href="https://coshield-ai.vercel.app/" target="_blank" rel="noopener" class="pr-demo-btn" id="coshieldDemo">
+                  LIVE DEMO <span class="view-arrow">↗</span>
+                </a>
+                <a href="https://github.com/WAnubhavGoel/coshield-ai" target="_blank" rel="noopener" class="pr-github-btn" id="coshieldGithub" title="View on GitHub">
+                  <svg class="gh-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                  <span>GitHub</span>
+                </a>
+              </div>
+            </div>
+            <div class="pr-tags">
+              <span>React</span><span>Node.js</span><span>PostgreSQL</span><span>pgvector</span><span>Redis</span><span>BullMQ</span><span>Cloudinary</span><span>Gemini API</span>
+            </div>
+            <p class="pr-desc">
+              AI-powered compliance platform with a Hybrid RAG engine fusing pgvector cosine similarity with PostgreSQL full-text search via Reciprocal Rank Fusion. Features RBAC, Redis caching (sub-10ms), and BullMQ background workers for PDF ingestion.
+            </p>
+            <div class="pr-year">2026</div>
+          </div>
+          <div class="pr-preview">
+            <div class="preview-mock">
+              <div class="mock-bar"><span></span><span></span><span></span></div>
+              <div class="mock-content coshield-preview">
+                <div class="mock-sidebar">
+                  <div class="ms-item active"></div>
+                  <div class="ms-item"></div>
+                  <div class="ms-item"></div>
+                </div>
+                <div class="mock-main">
+                  <div class="mm-header">
+                    <span class="mm-chip ai">AI</span>
+                    <span class="mm-chip rbac">RBAC</span>
+                    <span class="mm-chip rag">RAG</span>
+                  </div>
+                  <div class="mm-lines">
+                    <div class="ml"></div><div class="ml short"></div><div class="ml"></div><div class="ml mid"></div>
+                  </div>
+                  <div class="mm-stat-row">
+                    <div class="ms-stat"><div class="ms-num" style="color:var(--accent)">sub-10ms</div><div class="ms-lbl">Cache</div></div>
+                    <div class="ms-stat"><div class="ms-num">25%</div><div class="ms-lbl">Retrieval</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row reveal" data-num="02">
+          <div class="pr-num">02</div>
+          <div class="pr-body">
+            <div class="pr-top">
+              <a href="https://members-only-rosy.vercel.app/" target="_blank" rel="noopener" class="pr-name-link">
+                <h3 class="pr-name">MEMBERS-ONLY <span class="pr-live-arrow">↗</span></h3>
+              </a>
+              <div class="pr-actions">
+                <a href="https://members-only-rosy.vercel.app/" target="_blank" rel="noopener" class="pr-demo-btn" id="membersDemo">
+                  LIVE DEMO <span class="view-arrow">↗</span>
+                </a>
+                <a href="https://github.com/WAnubhavGoel/Members-Only" target="_blank" rel="noopener" class="pr-github-btn" id="membersGithub" title="View on GitHub">
+                  <svg class="gh-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                  <span>GitHub</span>
+                </a>
+              </div>
+            </div>
+            <div class="pr-tags">
+              <span>React</span><span>Express.js</span><span>PostgreSQL</span><span>Prisma ORM</span><span>Passport.js</span><span>Render</span>
+            </div>
+            <p class="pr-desc">
+              A secure full-stack membership-restricted discussion board with tier-based metadata masking. Implements Passport.js session auth, bcrypt hashing, CSRF protection via HTTP-only cookies, and role-based access control (RBAC).
+            </p>
+            <div class="pr-year">2026</div>
+          </div>
+          <div class="pr-preview">
+            <div class="preview-mock">
+              <div class="mock-bar"><span></span><span></span><span></span></div>
+              <div class="mock-content members-preview">
+                <div class="mock-sidebar">
+                  <div class="ms-avatar"></div>
+                  <div class="ms-item active"></div>
+                  <div class="ms-item"></div>
+                </div>
+                <div class="mock-main">
+                  <div class="mm-header">
+                    <span class="mm-chip lock">🔒 Secured</span>
+                    <span class="mm-chip rbac">RBAC</span>
+                  </div>
+                  <div class="mm-msg-list">
+                    <div class="mm-msg"><div class="msg-avatar"></div><div class="msg-body"><div class="ml"></div><div class="ml short"></div></div></div>
+                    <div class="mm-msg locked"><div class="msg-avatar blur"></div><div class="msg-body"><div class="ml blur-bar"></div><div class="ml short blur-bar"></div></div></div>
+                    <div class="mm-msg"><div class="msg-avatar"></div><div class="msg-body"><div class="ml"></div><div class="ml mid"></div></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row reveal" data-num="03">
+          <div class="pr-num">03</div>
+          <div class="pr-body">
+            <div class="pr-top">
+              <a href="https://shopping-cart-gamma-rust.vercel.app/" target="_blank" rel="noopener" class="pr-name-link">
+                <h3 class="pr-name">REACT SHOPPING CART <span class="pr-live-arrow">↗</span></h3>
+              </a>
+              <div class="pr-actions">
+                <a href="https://shopping-cart-gamma-rust.vercel.app/" target="_blank" rel="noopener" class="pr-demo-btn" id="shoppingDemo">
+                  LIVE DEMO <span class="view-arrow">↗</span>
+                </a>
+                <a href="https://github.com/WAnubhavGoel/Shopping_Cart" target="_blank" rel="noopener" class="pr-github-btn" id="shoppingGithub" title="View on GitHub">
+                  <svg class="gh-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                  <span>GitHub</span>
+                </a>
+              </div>
+            </div>
+            <div class="pr-tags">
+              <span>React.js</span><span>React Router v7</span><span>JavaScript ES6+</span><span>Vite</span><span>CSS3</span><span>Vercel</span>
+            </div>
+            <p class="pr-desc">
+              A modular e-commerce SPA with nested layout-driven client-side routing using React Router v7. Centralized cart state via React hooks + useOutletContext, async product fetching from external REST API via custom hook.
+            </p>
+            <div class="pr-year">2026</div>
+          </div>
+          <div class="pr-preview">
+            <div class="preview-mock">
+              <div class="mock-bar"><span></span><span></span><span></span></div>
+              <div class="mock-content shop-preview">
+                <div class="shop-nav">
+                  <div class="shop-logo"></div>
+                  <div class="shop-cart-icon">🛒<span class="cart-badge">3</span></div>
+                </div>
+                <div class="shop-grid">
+                  <div class="shop-card"><div class="sc-img"></div><div class="sc-name"></div><div class="sc-price"></div></div>
+                  <div class="shop-card"><div class="sc-img accent-img"></div><div class="sc-name"></div><div class="sc-price"></div></div>
+                  <div class="shop-card"><div class="sc-img"></div><div class="sc-name"></div><div class="sc-price"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row reveal" data-num="04">
+          <div class="pr-num">04</div>
+          <div class="pr-body">
+            <div class="pr-top">
+              <a href="https://memory-card-five-beta.vercel.app/" target="_blank" rel="noopener" class="pr-name-link">
+                <h3 class="pr-name">MEMORY CARD GAME <span class="pr-live-arrow">↗</span></h3>
+              </a>
+              <div class="pr-actions">
+                <a href="https://memory-card-five-beta.vercel.app/" target="_blank" rel="noopener" class="pr-demo-btn" id="memoryDemo">
+                  LIVE DEMO <span class="view-arrow">↗</span>
+                </a>
+                <a href="https://github.com/WAnubhavGoel/memory-card" target="_blank" rel="noopener" class="pr-github-btn" id="memoryGithub" title="View on GitHub">
+                  <svg class="gh-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                  <span>GitHub</span>
+                </a>
+              </div>
+            </div>
+            <div class="pr-tags">
+              <span>React.js</span><span>JavaScript</span><span>CSS3</span><span>Vercel</span>
+            </div>
+            <p class="pr-desc">
+              Interactive memory card game built with React functional components and hooks. Features Fisher-Yates shuffle algorithm for card randomization, score tracking without state mutation, and a fully responsive mobile-first UI.
+            </p>
+            <div class="pr-year">2026</div>
+          </div>
+          <div class="pr-preview">
+            <div class="preview-mock">
+              <div class="mock-bar"><span></span><span></span><span></span></div>
+              <div class="mock-content memory-preview">
+                <div class="mem-score">Score: <span>12</span> | Best: <span>15</span></div>
+                <div class="mem-grid">
+                  <div class="mem-card face-up">🎮</div>
+                  <div class="mem-card face-up">⭐</div>
+                  <div class="mem-card face-down"></div>
+                  <div class="mem-card face-up">🚀</div>
+                  <div class="mem-card face-down"></div>
+                  <div class="mem-card face-up">💎</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ CONTACT ═══════════════════════════════════ -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-num">05</span>
+        <h2 class="section-title">CONTACT</h2>
+        <div class="section-underline"></div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-left reveal">
+          <h3 class="contact-heading">Let's Work<br /><span class="highlight">Together.</span></h3>
+          <p class="contact-sub">
+            Open to full-time roles, internships, freelance projects, and exciting collaborations. I'd love to hear about your project.
+          </p>
+          <div class="contact-info-list">
+            <a href="mailto:goelanubhav70@gmail.com" class="ci-item" id="emailLink">
+              <div class="ci-icon">✉</div>
+              <div class="ci-text">
+                <span class="ci-label">Email</span>
+                <span class="ci-val">goelanubhav70@gmail.com</span>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/anubhav-goel-6b010a327/" target="_blank" rel="noopener" class="ci-item" id="linkedinLink">
+              <div class="ci-icon">in</div>
+              <div class="ci-text">
+                <span class="ci-label">LinkedIn</span>
+                <span class="ci-val">anubhav-goel-6b010a327</span>
+              </div>
+            </a>
+            <a href="https://github.com/WAnubhavGoel" target="_blank" rel="noopener" class="ci-item" id="githubLink">
+              <div class="ci-icon">⌥</div>
+              <div class="ci-text">
+                <span class="ci-label">GitHub</span>
+                <span class="ci-val">WAnubhavGoel</span>
+              </div>
+            </a>
+            <a href="tel:+919319902685" class="ci-item" id="phoneLink">
+              <div class="ci-icon">📞</div>
+              <div class="ci-text">
+                <span class="ci-label">Phone</span>
+                <span class="ci-val">+91 9319902685</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactName">Name</label>
+              <input type="text" id="contactName" name="name" placeholder="Your Name" required />
+              <div class="form-error" id="nameError">Please enter your name</div>
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Email</label>
+              <input type="email" id="contactEmail" name="email" placeholder="your@email.com" required />
+              <div class="form-error" id="emailError">Please enter a valid email</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contactSubject">Subject</label>
+            <input type="text" id="contactSubject" name="subject" placeholder="Project Inquiry / Job Opportunity" required />
+            <div class="form-error" id="subjectError">Please enter a subject</div>
+          </div>
+          <div class="form-group">
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" name="message" rows="6" placeholder="Tell me about your project..." required></textarea>
+            <div class="form-error" id="messageError">Please enter your message</div>
+          </div>
+          <button type="submit" class="btn btn-primary submit-btn" id="submitBtn">
+            <span class="btn-text">Send Message</span>
+            <span class="btn-arrow">→</span>
+          </button>
+          <div class="form-success" id="formSuccess">
+            ✓ Message sent! I'll get back to you soon.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">AG<span class="logo-dot">.</span></div>
+      <p class="footer-copy">Designed &amp; Built by <span class="highlight">Anubhav Goel</span> © 2026</p>
+      <div class="footer-socials">
+        <a href="https://github.com/WAnubhavGoel" target="_blank" rel="noopener" id="footerGithub">GitHub</a>
+        <a href="https://www.linkedin.com/in/anubhav-goel-6b010a327/" target="_blank" rel="noopener" id="footerLinkedin">LinkedIn</a>
+        <a href="mailto:goelanubhav70@gmail.com" id="footerEmail">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

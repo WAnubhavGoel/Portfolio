@@ -51,15 +51,6 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 ::selection { background: var(--accent); color: #000; }
 
-/* ── Dot Grid Canvas ────────────────────────────────────────── */
-#dotGridCanvas {
-  position: fixed;
-  top: 0; left: 0;
-  display: block;
-  pointer-events: none;
-  z-index: 1;   /* above body bg, below all content */
-}
-
 /* ── Custom Cursor ─────────────────────────────────────────── */
 .cursor-dot {
   position: fixed; top: 0; left: 0; z-index: 9999;
@@ -115,8 +106,8 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: var(--
 /* Fallback — JS overrides with inline styles */
 .reveal.in-view { opacity: 1 !important; transform: translateY(0) !important; }
 
-/* ── Section Common ────────────────────────────────────── */
-.section { padding: 120px 0; position: relative; z-index: 2; background: transparent; }
+/* ── Section Common ────────────────────────────────────────── */
+.section { padding: 120px 0; position: relative; z-index: 1; }
 
 .section-head { margin-bottom: 72px; }
 
@@ -377,7 +368,7 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: var(--
 /* ════════════════════════════════════════════════════════
    ABOUT
    ════════════════════════════════════════════════════════ */
-.about-section { background: transparent; }
+.about-section { background: var(--bg2); }
 
 .about-content { max-width: 720px; }
 
@@ -393,7 +384,7 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: var(--
 /* ════════════════════════════════════════════════════════
    MY TECH STACK
    ════════════════════════════════════════════════════════ */
-.techstack-section { background: transparent; }
+.techstack-section { background: var(--bg); }
 
 .ts-head { margin-bottom: 56px; }
 
@@ -468,7 +459,7 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: var(--
 /* ════════════════════════════════════════════════════════
    EDUCATION — 3-COLUMN CENTERED TIMELINE
    ════════════════════════════════════════════════════════ */
-.education-section { background: transparent; }
+.education-section { background: var(--bg2); }
 
 /* outer wrapper — gives us the 3-column grid context */
 .edu-timeline {
@@ -615,7 +606,7 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: var(--
 /* ════════════════════════════════════════════════════════
    PROJECTS
    ════════════════════════════════════════════════════════ */
-.projects-section { background: transparent; }
+.projects-section { background: var(--bg); }
 
 .projects-list { display: flex; flex-direction: column; }
 
@@ -774,7 +765,7 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: var(--
 /* ════════════════════════════════════════════════════════
    CONTACT
    ════════════════════════════════════════════════════════ */
-.contact-section { background: transparent; }
+.contact-section { background: var(--bg2); }
 
 .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
 

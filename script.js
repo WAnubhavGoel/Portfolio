@@ -14,8 +14,10 @@ function onRAF(fn) {
 }
 
 /* ════════════════════════════════════════════════════════════
-   0. DOT GRID — cursor proximity highlight effect
-      Green dots on dark background, glow near cursor
+   0. DOT GRID — cursor proximity spotlight effect
+      Canvas sits above all content (z-index:9997), pointer-events:none
+      • Dots always visible at rest (subtle grey-green)
+      • Dots near cursor grow + glow vivid green
    ════════════════════════════════════════════════════════════ */
 (function initDotGrid() {
   const canvas = document.getElementById('dotGridCanvas');
@@ -23,15 +25,17 @@ function onRAF(fn) {
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
-  const SPACING      = 28;   // px between dots
-  const DOT_R        = 1.5;  // base dot radius
-  const MAX_R        = 5;    // max radius at cursor centre
-  const RADIUS       = 150;  // cursor influence radius in px
-  const BASE_ALPHA   = 0.22; // resting dot opacity (clearly visible)
-  const BRIGHT_ALPHA = 0.95; // lit dot opacity
+  const SPACING      = 26;    // grid spacing in px
+  const DOT_BASE_R   = 1.5;   // dot radius at rest
+  const DOT_MAX_R    = 5.5;   // dot radius at cursor center
+  const INFLUENCE    = 160;   // spotlight radius in px
+  const BASE_ALPHA   = 0.15;  // rest opacity  — subtle but visible
+  const BRIGHT_ALPHA = 0.9;   // glow opacity near cursor
 
   let W = 0, H = 0;
-  let mouseX = -9999, mouseY = -9999;
+  // Target mouse (raw) and eased display position
+  let rawX = -999, rawY = -999;
+  let easeX = -999, easeY = -999;
   let dots = [];
 
   function buildDots() {
@@ -40,7 +44,7 @@ function onRAF(fn) {
     const rows = Math.ceil(H / SPACING) + 2;
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < cols; c++) {
-        dots.push({ x: c * SPACING, y: r * SPACING });
+        dots.push(c * SPACING, r * SPACING); // flat array for speed
       }
     }
   }
@@ -48,34 +52,40 @@ function onRAF(fn) {
   function resize() {
     W = window.innerWidth;
     H = window.innerHeight;
-    // Set BOTH the buffer size AND the CSS display size
-    canvas.width  = W;
-    canvas.height = H;
+    canvas.width        = W;
+    canvas.height       = H;
     canvas.style.width  = W + 'px';
     canvas.style.height = H + 'px';
     buildDots();
   }
 
   function draw() {
+    // Ease cursor position for a smooth trailing feel
+    easeX += (rawX - easeX) * 0.1;
+    easeY += (rawY - easeY) * 0.1;
+
     ctx.clearRect(0, 0, W, H);
 
-    for (let i = 0; i < dots.length; i++) {
-      const d    = dots[i];
-      const dx   = d.x - mouseX;
-      const dy   = d.y - mouseY;
+    const len = dots.length;
+    for (let i = 0; i < len; i += 2) {
+      const x  = dots[i];
+      const y  = dots[i + 1];
+      const dx = x - easeX;
+      const dy = y - easeY;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      const prox = Math.max(0, 1 - dist / RADIUS);
+      const prox = Math.max(0, 1 - dist / INFLUENCE);
 
       const alpha  = BASE_ALPHA  + (BRIGHT_ALPHA - BASE_ALPHA) * prox;
-      const radius = DOT_R       + (MAX_R        - DOT_R)      * prox;
+      const radius = DOT_BASE_R  + (DOT_MAX_R    - DOT_BASE_R) * prox;
 
-      // Shift from muted grey-green → vivid accent green as cursor approaches
-      const g = Math.round(160 + 95 * prox);   // 160 → 255
-      const b = Math.round(80  + 55 * prox);   // 80  → 135
+      // Base dots: muted grey-green. Cursor dots: vivid #00ff87
+      const r_ = 0;
+      const g_ = Math.round(140 + 115 * prox);  // 140 → 255
+      const b_ = Math.round(70  +  65 * prox);  //  70 → 135
 
       ctx.beginPath();
-      ctx.arc(d.x, d.y, radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0,${g},${b},${alpha.toFixed(3)})`;
+      ctx.arc(x, y, radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${r_},${g_},${b_},${alpha.toFixed(3)})`;
       ctx.fill();
     }
 
@@ -83,14 +93,15 @@ function onRAF(fn) {
   }
 
   document.addEventListener('mousemove', e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    rawX = e.clientX;
+    rawY = e.clientY;
   });
 
   window.addEventListener('resize', resize, { passive: true });
   resize();
   requestAnimationFrame(draw);
 })();
+
 
 /* ════════════════════════════════════════════════════════════
    1. CUSTOM CURSOR

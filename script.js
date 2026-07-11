@@ -25,12 +25,12 @@ function onRAF(fn) {
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
-  const SPACING      = 32;    // grid spacing in px
-  const DOT_BASE_R   = 1;     // dot radius at rest — tiny
-  const DOT_MAX_R    = 2.5;   // dot radius at cursor center — still small
-  const INFLUENCE    = 140;   // spotlight radius in px
-  const BASE_ALPHA   = 0.08;  // rest opacity — very subtle
-  const BRIGHT_ALPHA = 0.55;  // glow opacity near cursor — noticeable but not blinding
+  const SPACING      = 28;    // grid spacing in px
+  const DOT_BASE_R   = 0.8;   // tiny resting dots
+  const DOT_MAX_R    = 3.8;   // larger size at the very center of cursor
+  const INFLUENCE    = 260;   // wider spotlight radius (like the second screenshot)
+  const BASE_ALPHA   = 0.03;  // extremely dim at rest — almost invisible
+  const BRIGHT_ALPHA = 0.95;  // very bright center glow
 
   let W = 0, H = 0;
   // Target mouse (raw) and eased display position
@@ -61,8 +61,8 @@ function onRAF(fn) {
 
   function draw() {
     // Ease cursor position for a smooth trailing feel
-    easeX += (rawX - easeX) * 0.1;
-    easeY += (rawY - easeY) * 0.1;
+    easeX += (rawX - easeX) * 0.12;
+    easeY += (rawY - easeY) * 0.12;
 
     ctx.clearRect(0, 0, W, H);
 
@@ -75,10 +75,13 @@ function onRAF(fn) {
       const dist = Math.sqrt(dx * dx + dy * dy);
       const prox = Math.max(0, 1 - dist / INFLUENCE);
 
-      const alpha  = BASE_ALPHA  + (BRIGHT_ALPHA - BASE_ALPHA) * prox;
-      const radius = DOT_BASE_R  + (DOT_MAX_R    - DOT_BASE_R) * prox;
+      // Use exponential power to make the center pop bright and fade out fast at the edges
+      const curve = Math.pow(prox, 2.5);
 
-      // Base dots: muted grey-green. Cursor dots: vivid #00ff87
+      const alpha  = BASE_ALPHA  + (BRIGHT_ALPHA - BASE_ALPHA) * curve;
+      const radius = DOT_BASE_R  + (DOT_MAX_R    - DOT_BASE_R) * curve;
+
+      // Base dots: dim. Center: bright neon accent green
       const r_ = 0;
       const g_ = Math.round(140 + 115 * prox);  // 140 → 255
       const b_ = Math.round(70  +  65 * prox);  //  70 → 135

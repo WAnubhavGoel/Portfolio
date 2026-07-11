@@ -21,13 +21,14 @@ function onRAF(fn) {
   const canvas = document.getElementById('dotGridCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
+  if (!ctx) return;
 
-  const SPACING  = 28;   // px between dots
-  const DOT_R    = 1.5;  // base dot radius
-  const MAX_R    = 4.5;  // max radius when cursor very close
-  const RADIUS   = 140;  // cursor influence radius in px
-  const BASE_ALPHA  = 0.12;  // dim dot opacity
-  const BRIGHT_ALPHA = 0.85; // lit dot opacity
+  const SPACING      = 28;   // px between dots
+  const DOT_R        = 1.5;  // base dot radius
+  const MAX_R        = 5;    // max radius at cursor centre
+  const RADIUS       = 150;  // cursor influence radius in px
+  const BASE_ALPHA   = 0.22; // resting dot opacity (clearly visible)
+  const BRIGHT_ALPHA = 0.95; // lit dot opacity
 
   let W = 0, H = 0;
   let mouseX = -9999, mouseY = -9999;
@@ -35,8 +36,8 @@ function onRAF(fn) {
 
   function buildDots() {
     dots = [];
-    const cols = Math.ceil(W / SPACING) + 1;
-    const rows = Math.ceil(H / SPACING) + 1;
+    const cols = Math.ceil(W / SPACING) + 2;
+    const rows = Math.ceil(H / SPACING) + 2;
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < cols; c++) {
         dots.push({ x: c * SPACING, y: r * SPACING });
@@ -45,8 +46,13 @@ function onRAF(fn) {
   }
 
   function resize() {
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
+    W = window.innerWidth;
+    H = window.innerHeight;
+    // Set BOTH the buffer size AND the CSS display size
+    canvas.width  = W;
+    canvas.height = H;
+    canvas.style.width  = W + 'px';
+    canvas.style.height = H + 'px';
     buildDots();
   }
 
@@ -54,32 +60,28 @@ function onRAF(fn) {
     ctx.clearRect(0, 0, W, H);
 
     for (let i = 0; i < dots.length; i++) {
-      const d = dots[i];
-      // distance from cursor (accounting for scroll)
-      const dx = d.x - mouseX;
-      const dy = d.y - mouseY;
+      const d    = dots[i];
+      const dx   = d.x - mouseX;
+      const dy   = d.y - mouseY;
       const dist = Math.sqrt(dx * dx + dy * dy);
-
-      // normalised proximity: 1 = right on cursor, 0 = outside radius
       const prox = Math.max(0, 1 - dist / RADIUS);
 
-      const alpha  = BASE_ALPHA  + (BRIGHT_ALPHA - BASE_ALPHA)  * prox;
-      const radius = DOT_R       + (MAX_R        - DOT_R)        * prox;
+      const alpha  = BASE_ALPHA  + (BRIGHT_ALPHA - BASE_ALPHA) * prox;
+      const radius = DOT_R       + (MAX_R        - DOT_R)      * prox;
 
-      // Green tint that intensifies near cursor
-      const g = Math.round(180 + 75 * prox);   // 180 → 255
-      const color = `rgba(0, ${g}, ${Math.round(100 + 35 * prox)}, ${alpha.toFixed(3)})`;
+      // Shift from muted grey-green → vivid accent green as cursor approaches
+      const g = Math.round(160 + 95 * prox);   // 160 → 255
+      const b = Math.round(80  + 55 * prox);   // 80  → 135
 
       ctx.beginPath();
       ctx.arc(d.x, d.y, radius, 0, Math.PI * 2);
-      ctx.fillStyle = color;
+      ctx.fillStyle = `rgba(0,${g},${b},${alpha.toFixed(3)})`;
       ctx.fill();
     }
 
     requestAnimationFrame(draw);
   }
 
-  // Track mouse in viewport coords (canvas is fixed, so no scroll offset needed)
   document.addEventListener('mousemove', e => {
     mouseX = e.clientX;
     mouseY = e.clientY;
@@ -87,7 +89,7 @@ function onRAF(fn) {
 
   window.addEventListener('resize', resize, { passive: true });
   resize();
-  draw();
+  requestAnimationFrame(draw);
 })();
 
 /* ════════════════════════════════════════════════════════════

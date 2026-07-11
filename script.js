@@ -25,12 +25,12 @@ function onRAF(fn) {
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
-  const SPACING      = 26;    // grid spacing in px
-  const DOT_BASE_R   = 1.5;   // dot radius at rest
-  const DOT_MAX_R    = 5.5;   // dot radius at cursor center
-  const INFLUENCE    = 160;   // spotlight radius in px
-  const BASE_ALPHA   = 0.15;  // rest opacity  — subtle but visible
-  const BRIGHT_ALPHA = 0.9;   // glow opacity near cursor
+  const SPACING      = 32;    // grid spacing in px
+  const DOT_BASE_R   = 1;     // dot radius at rest — tiny
+  const DOT_MAX_R    = 2.5;   // dot radius at cursor center — still small
+  const INFLUENCE    = 140;   // spotlight radius in px
+  const BASE_ALPHA   = 0.08;  // rest opacity — very subtle
+  const BRIGHT_ALPHA = 0.55;  // glow opacity near cursor — noticeable but not blinding
 
   let W = 0, H = 0;
   // Target mouse (raw) and eased display position

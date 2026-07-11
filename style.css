@@ -198,11 +198,14 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: var(--
    HERO
    ════════════════════════════════════════════════════════ */
 .hero {
-  min-height: 100vh;
+  height: 100vh;
+  min-height: 600px;
   display: flex; align-items: center;
-  padding: var(--nav-h) 48px 0;
+  padding: calc(var(--nav-h) + 10px) 48px 20px;
   max-width: 1200px; margin: 0 auto;
-  position: relative; gap: 60px;
+  position: relative; gap: 40px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 .hero-bg-grid {
   position: fixed; inset: 0; z-index: -2;
@@ -216,14 +219,15 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: var(--
   pointer-events: none; z-index: -1;
 }
 
-.hero-content { flex: 1; max-width: 640px; }
+.hero-content { flex: 1; max-width: 640px; display: flex; flex-direction: column; justify-content: center; }
 
 .hero-badge {
   display: inline-flex; align-items: center; gap: 10px;
-  font-family: var(--font-mono); font-size: 12px; color: var(--accent);
-  letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 28px;
-  padding: 8px 16px; border: 1px solid rgba(0,255,135,0.2);
+  font-family: var(--font-mono); font-size: 11px; color: var(--accent);
+  letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 16px;
+  padding: 6px 14px; border: 1px solid rgba(0,255,135,0.2);
   border-radius: 100px; background: var(--accent-dim);
+  align-self: flex-start;
 }
 .badge-dot {
   width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
@@ -233,9 +237,9 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: var(--
 
 .hero-name {
   font-family: var(--font-head);
-  font-size: clamp(56px, 8.5vw, 110px);
+  font-size: clamp(48px, 7.5vw, 96px);
   font-weight: 800; line-height: 0.9; letter-spacing: -0.04em;
-  color: var(--white); margin-bottom: 28px;
+  color: var(--white); margin-bottom: 16px;
 }
 .name-word {
   display: block;
@@ -251,34 +255,34 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: var(--
 }
 
 .hero-desc {
-  font-size: 17px; color: var(--text2); line-height: 1.7;
-  margin-bottom: 36px; max-width: 520px;
+  font-size: 16px; color: var(--text2); line-height: 1.6;
+  margin-bottom: 24px; max-width: 520px;
   animation: fadeUp 0.8s var(--ease) 0.4s both;
 }
 @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
 
 .hero-cta {
-  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-  margin-bottom: 52px; animation: fadeUp 0.8s var(--ease) 0.55s both;
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  margin-bottom: 36px; animation: fadeUp 0.8s var(--ease) 0.55s both;
 }
 
 .hero-stats { display: flex; align-items: center; animation: fadeUp 0.8s var(--ease) 0.7s both; }
-.stat-item { display: flex; flex-direction: column; align-items: center; padding: 0 28px; }
+.stat-item { display: flex; flex-direction: column; align-items: center; padding: 0 24px; }
 .stat-item:first-child { padding-left: 0; }
 .stat-value {
-  font-family: var(--font-head); font-size: 26px; font-weight: 700;
+  font-family: var(--font-head); font-size: 24px; font-weight: 700;
   color: var(--white); letter-spacing: -0.03em;
 }
-.stat-plus { font-size: 18px; color: var(--accent); }
+.stat-plus { font-size: 16px; color: var(--accent); }
 .stat-label {
-  font-size: 11px; color: var(--text3); text-transform: uppercase;
+  font-size: 10px; color: var(--text3); text-transform: uppercase;
   letter-spacing: 0.1em; margin-top: 2px; font-family: var(--font-mono);
 }
-.stat-divider { width: 1px; height: 36px; background: var(--border); }
+.stat-divider { width: 1px; height: 32px; background: var(--border); }
 
 /* ── 3D Avatar ─────────────────────────────────────────────── */
 .hero-avatar-wrap {
-  position: relative; width: 360px; height: 360px; flex-shrink: 0;
+  position: relative; width: 320px; height: 320px; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
   animation: fadeUp 1s var(--ease) 0.3s both;
 }

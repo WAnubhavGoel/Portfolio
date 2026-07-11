@@ -51,6 +51,16 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 ::selection { background: var(--accent); color: #000; }
 
+/* ── Dot Grid Canvas ────────────────────────────────────────── */
+#dotGridCanvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 1;
+}
+
 /* ── Custom Cursor ─────────────────────────────────────────── */
 .cursor-dot {
   position: fixed; top: 0; left: 0; z-index: 9999;
@@ -107,7 +117,7 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: var(--
 .reveal.in-view { opacity: 1 !important; transform: translateY(0) !important; }
 
 /* ── Section Common ────────────────────────────────────────── */
-.section { padding: 120px 0; }
+.section { padding: 120px 0; position: relative; z-index: 1; }
 
 .section-head { margin-bottom: 72px; }
 
